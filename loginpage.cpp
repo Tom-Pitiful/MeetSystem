@@ -65,3 +65,10 @@ void LoginPage::on_signUpPushButton_clicked()
     signDlg = new signUpDialog(this);
     signDlg->exec();
 }
+
+void LoginPage::on_forgetPasswdPushButton_clicked()
+{
+    forgetPage = new forgetPassWordDlg(this);
+    forgetPage->exec();
+}
+

@@ -1,14 +1,21 @@
 
 #include <QtDebug>
 #include <QtSql>
+//CREATE TABLE user (
+//id INT PRIMARY KEY AUTO_INCREMENT,
+//username VARCHAR(30) NOT NULL,
+//password VARCHAR(20) NOT NULL,
+//user_type ENUM('admin', 'normal') NOT NULL
+//);
+
 static void connectsql()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
+    static QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
     db.setUserName("meetuser");
     db.setPassword("123456");
     db.setPort(3306);
-    db.setDatabaseName("meetingsql");
+    db.setDatabaseName("meetdatabase");
     if (!db.open()) {
         qDebug() << "last error: " << db.lastError().text();
         return;
@@ -37,12 +44,13 @@ static int verifyuser(QString userName, QString passWord)
         QString type = query.value(0).toString();
         if (type == "normal")
             return 0;
-        if (type == "root")
+        if (type == "admin")
             return 1;
     }
     return -2;
 }
-//用来判断用户是否已经存在
+
+//用来判断用户是否已经存在,存在返回false,否则返回true
 static bool isVerifyUserName(QString userName)
 {
     QSqlQuery query;
@@ -65,6 +73,19 @@ static bool signUp(QString userName, QString passWord, QString userType)
     query.bindValue(":username", userName);
     query.bindValue(":password", passWord);
     query.bindValue(":userType", userType);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return false;
+    }
+    return true;
+}
+
+static bool modifyPasswd(QString userName, QString newPasswd)
+{
+    QSqlQuery query;
+    query.prepare("UPDATE user_table SET password = :password WHERE username = :username");
+    query.bindValue(":password",newPasswd);
+    query.bindValue(":username",userName);
     if (!query.exec()) {
         qDebug() << "Error executing query: " << query.lastError().text();
         return false;

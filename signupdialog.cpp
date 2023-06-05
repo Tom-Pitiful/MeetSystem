@@ -30,7 +30,7 @@ void signUpDialog::on_ok_btn_clicked()
     if (ui->userTypeComboBox->currentText() == "普通用户")
         userType = "normal";
     if (ui->userTypeComboBox->currentText() == "管理员")
-        userType = "root";
+        userType = "admin";
     if (userName.isEmpty() || passWord.isEmpty() || userType.isEmpty()) {
         ui->tipLabel->setText(tr("请填完所有的项目！"));
     } else {

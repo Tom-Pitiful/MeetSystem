@@ -10,18 +10,21 @@ CONFIG += c++17
 
 SOURCES += \
     adminpage.cpp \
+    forgetpassworddlg.cpp \
     main.cpp \
     loginpage.cpp \
     signupdialog.cpp
 
 HEADERS += \
     adminpage.h \
+    forgetpassworddlg.h \
     loginpage.h \
     signupdialog.h \
     sqlOperation.h
 
 FORMS += \
     adminpage.ui \
+    forgetpassworddlg.ui \
     loginpage.ui \
     signupdialog.ui
 
