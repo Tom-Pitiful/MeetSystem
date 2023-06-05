@@ -1,12 +1,6 @@
 
 #include <QtDebug>
 #include <QtSql>
-//CREATE TABLE user (
-//id INT PRIMARY KEY AUTO_INCREMENT,
-//username VARCHAR(30) NOT NULL,
-//password VARCHAR(20) NOT NULL,
-//user_type ENUM('admin', 'normal') NOT NULL
-//);
 
 static void connectsql()
 {

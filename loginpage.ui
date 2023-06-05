@@ -195,7 +195,7 @@ QPushButton:hover {
          </size>
         </property>
         <property name="placeholderText">
-         <string>请输入账号</string>
+         <string>请输入用户名</string>
         </property>
        </widget>
       </item>

@@ -48,17 +48,10 @@ void forgetPassWordDlg::on_ok_btn_clicked()
 {
     userName = ui->userNameLineEdit->text();
     passWord = ui->passWordLineEdit_1->text();
-    if(userName.isEmpty()&&passWord.isEmpty()&&ui->passWordLineEdit->text().isEmpty())
-    {
-        ui->tipLabel->setText(tr("请填完所有的项目！"));
+    if (!userName.isEmpty() && !passWord.isEmpty() && !ui->newPassWordLabel->text().isEmpty()) {
+        if (modifyPasswd(userName, passWord)) {
+            QMessageBox::information(this, tr("提示信息"), tr("修改成功！"), QMessageBox::Ok);
+            this->close();
+        }
     }
-    else{
-        ui->tipLabel->setText("");
-    if(modifyPasswd(userName,passWord)){
-        QMessageBox::information(this,tr("提示信息"),tr("修改成功！"),QMessageBox::Ok);
-        this->close();
-    }
-    }
-
 }
-
