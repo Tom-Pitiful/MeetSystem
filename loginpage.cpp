@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "sqlOperation.h"
 #include "ui_loginpage.h"
+
 LoginPage::LoginPage(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginPage)
@@ -19,6 +20,7 @@ LoginPage::LoginPage(QWidget *parent)
     ui->loginFrame->setFixedSize(dialogSize.width() / 3, dialogSize.height() / 1.5);
     ui->tipLabel->setText("");        //初始化提示文字
     ui->userNameLineEdit->setFocus(); //设置焦点在用户名框上
+    connectsql();
 }
 
 LoginPage::~LoginPage()
@@ -29,7 +31,7 @@ LoginPage::~LoginPage()
 void LoginPage::on_signInPushButton_clicked()
 {
     userName = ui->userNameLineEdit->text();
-    passWord = ui->passWordineEdit->text();
+    passWord = ui->passWordLineEdit->text();
     if (userName.isEmpty() && passWord.isEmpty()) {
         ui->tipLabel->setText(tr("请输入用户名和密码！"));
     } else if (userName.isEmpty() && !passWord.isEmpty()) {
@@ -43,12 +45,23 @@ void LoginPage::on_signInPushButton_clicked()
 
 void LoginPage::verification()
 {
-    connectsql();
-    if (verifyuser(userName, passWord)) {
-        ui->tipLabel->setText("");
-        QMessageBox::information(this, tr("提示窗口"), tr("连接成功！"));
-        //进行登录操作
-    } else {
+    int type = verifyuser(userName, passWord);
+    if (type == -2) {
         ui->tipLabel->setText(tr("请输入正确的账号和密码！"));
+    } else if (type == -1) {
+        ui->tipLabel->setText("");
+        QMessageBox::critical(this, tr("错误信息"), tr("数据库连接错误"));
+    } else if (type == 0) {
+        ui->tipLabel->setText("");
+        QMessageBox::information(this, tr("普通用户提示窗口"), tr("连接成功！"));
+    } else if (type == 1) {
+        ui->tipLabel->setText("");
+        QMessageBox::information(this, tr("管理员提示窗口"), tr("连接成功！"));
     }
+}
+
+void LoginPage::on_signUpPushButton_clicked()
+{
+    signDlg = new signUpDialog(this);
+    signDlg->exec();
 }

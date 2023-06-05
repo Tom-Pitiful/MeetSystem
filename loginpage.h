@@ -3,9 +3,7 @@
 #define LOGINPAGE_H
 
 #include <QDialog>
-
-
-
+#include "signupdialog.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginPage; }
 QT_END_NAMESPACE
@@ -21,12 +19,14 @@ public:
 
 private slots:
     void on_signInPushButton_clicked();
+    void on_signUpPushButton_clicked();
 
 private:
     Ui::LoginPage *ui;
     QString userName;
     QString passWord;
     void verification(); //用来验证用户名和密码
+    signUpDialog *signDlg; //注册界面
 };
 
 #endif // LOGINPAGE_H

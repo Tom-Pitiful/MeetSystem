@@ -1,10 +1,7 @@
 
 #include <QtDebug>
 #include <QtSql>
-#ifndef SQLOPERATION_H
-#define SQLOPERATION_H
-
-void connectsql()
+static void connectsql()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
     db.setHostName("127.0.0.1");
@@ -18,22 +15,59 @@ void connectsql()
     }
     qDebug() << "连接成功！";
 }
-
-bool verifyuser(QString userName, QString passWord)
+/*
+ * 用户名和密码的验证函数
+ * -2 代表用户名密码错误
+ * -1 代表数据库错误。会在控制台打印错误信息
+ * 0  代表普通用户
+ * 1  代表管理员
+*/
+static int verifyuser(QString userName, QString passWord)
 {
     QSqlQuery query;
     query.prepare(
-        "SELECT username, password FROM user WHERE username = :username AND password = :password");
+        "SELECT user_type FROM user_table WHERE username = :username AND password = :password");
     query.bindValue(":username", userName);
     query.bindValue(":password", passWord);
     if (!query.exec()) {
         qDebug() << "Error executing query: " << query.lastError().text();
-        return false;
+        return -1;
     }
     if (query.next()) {
-        return true;
+        QString type = query.value(0).toString();
+        if (type == "normal")
+            return 0;
+        if (type == "root")
+            return 1;
     }
-    return false;
+    return -2;
+}
+//用来判断用户是否已经存在
+static bool isVerifyUserName(QString userName)
+{
+    QSqlQuery query;
+    query.prepare("SELECT username FROM user_table WHERE username = :username");
+    query.bindValue(":username", userName);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return false;
+    }
+    if (query.next())
+        return false;
+    return true;
 }
 
-#endif // SQLOPERATION_H
+static bool signUp(QString userName, QString passWord, QString userType)
+{
+    QSqlQuery query;
+    query.prepare("INSERT INTO user_table (username, password, user_type) VALUES (:username, "
+                  ":password, :userType);");
+    query.bindValue(":username", userName);
+    query.bindValue(":password", passWord);
+    query.bindValue(":userType", userType);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return false;
+    }
+    return true;
+}

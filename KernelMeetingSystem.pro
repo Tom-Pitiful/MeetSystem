@@ -9,15 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    adminpage.cpp \
     main.cpp \
-    loginpage.cpp
+    loginpage.cpp \
+    signupdialog.cpp
 
 HEADERS += \
+    adminpage.h \
     loginpage.h \
+    signupdialog.h \
     sqlOperation.h
 
 FORMS += \
-    loginpage.ui
+    adminpage.ui \
+    loginpage.ui \
+    signupdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
