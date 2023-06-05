@@ -16,7 +16,7 @@ LoginPage::LoginPage(QWidget *parent)
     QSize size = screen->size();
     this->setFixedSize(size.width() / 2, size.height() / 2);
     QSize dialogSize = this->size();
-    ui->loginFrame->setFixedSize(dialogSize.width() / 3, dialogSize.height() / 2);
+    ui->loginFrame->setFixedSize(dialogSize.width() / 3, dialogSize.height() / 1.5);
     ui->tipLabel->setText("");        //初始化提示文字
     ui->userNameLineEdit->setFocus(); //设置焦点在用户名框上
 }

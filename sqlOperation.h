@@ -1,6 +1,6 @@
 
 #include <QtDebug>
-#include <Qtsql>
+#include <QtSql>
 #ifndef SQLOPERATION_H
 #define SQLOPERATION_H
 
