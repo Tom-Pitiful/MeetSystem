@@ -2,9 +2,10 @@
 #ifndef LOGINPAGE_H
 #define LOGINPAGE_H
 
+#include <QCloseEvent>
 #include <QDialog>
-#include "signupdialog.h"
 #include "forgetpassworddlg.h"
+#include "signupdialog.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginPage; }
 QT_END_NAMESPACE
@@ -17,12 +18,16 @@ class LoginPage : public QDialog
 public:
     LoginPage(QWidget *parent = nullptr);
     ~LoginPage();
+    //void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_signInPushButton_clicked();
     void on_signUpPushButton_clicked();
 
     void on_forgetPasswdPushButton_clicked();
+
+signals:
+    void dlgClose(int value);
 
 private:
     Ui::LoginPage *ui;

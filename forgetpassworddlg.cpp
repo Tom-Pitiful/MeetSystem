@@ -8,22 +8,17 @@ forgetPassWordDlg::forgetPassWordDlg(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("找回密码窗口"));
+    this->setMinimumWidth(parent->width() / 4 + 100);
     ui->newPassWordLabel->hide();
     ui->passWordLineEdit->hide();
     ui->passWordLineEdit_1->hide();
     ui->newPassWordLabel_1->hide();
     this->adjustSize();
-    connect(ui->userNameLineEdit,&QLineEdit::editingFinished,[=](){
-        if(!isVerifyUserName(ui->userNameLineEdit->text())){
-            ui->newPassWordLabel->show();
-            ui->passWordLineEdit->show();
-            ui->passWordLineEdit_1->show();
-            ui->newPassWordLabel_1->show();
-            this->adjustSize();
-            ui->tipLabel->setText("");
-        }
-        else{
+    connect(ui->userNameLineEdit, &QLineEdit::editingFinished, [=]() {
+        if (!isVerifyUserName(ui->userNameLineEdit->text())) {
             ui->tipLabel->setText(tr("用户不存在！"));
+        } else {
+            ui->tipLabel->setText(tr(""));
         }
     });
     connect(ui->passWordLineEdit_1,&QLineEdit::textEdited,[=](QString newPasswd){
@@ -47,6 +42,15 @@ forgetPassWordDlg::~forgetPassWordDlg()
 void forgetPassWordDlg::on_ok_btn_clicked()
 {
     userName = ui->userNameLineEdit->text();
+    if (isVerifyPhoneAndEmail(ui->phoneLineEdit->text(), ui->emailLineEdit->text()) == userName) {
+        ui->newPassWordLabel->show();
+        ui->passWordLineEdit->show();
+        ui->passWordLineEdit_1->show();
+        ui->newPassWordLabel_1->show();
+        ui->tipLabel->setText("");
+    } else {
+        ui->tipLabel->setText("手机号或密码错误");
+    }
     passWord = ui->passWordLineEdit_1->text();
     if (!userName.isEmpty() && !passWord.isEmpty() && !ui->newPassWordLabel->text().isEmpty()) {
         if (modifyPasswd(userName, passWord)) {

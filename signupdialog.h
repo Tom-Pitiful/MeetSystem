@@ -22,7 +22,10 @@ private:
     Ui::signUpDialog *ui;
     QString userName;
     QString passWord;
-    QString userType;
+    QString employeeName;
+    QString phone;
+    QString email;
+    int departmentid;
 };
 
 #endif // SIGNUPDIALOG_H

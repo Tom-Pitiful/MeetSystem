@@ -5,12 +5,12 @@
 #include <QTimer>
 #include "sqlOperation.h"
 #include "ui_loginpage.h"
-
 LoginPage::LoginPage(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginPage)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     this->setWindowTitle(tr("kernel会议管理系统")); //设置标题
     //设置大小
     QScreen *screen = QApplication::primaryScreen();
@@ -27,6 +27,11 @@ LoginPage::~LoginPage()
 {
     delete ui;
 }
+
+//void LoginPage::closeEvent(QCloseEvent *event)
+//{
+//    this->deleteLater();
+//}
 
 void LoginPage::on_signInPushButton_clicked()
 {
@@ -47,7 +52,7 @@ void LoginPage::verification()
 {
     int type = verifyuser(userName, passWord);
     if (type == -2) {
-        ui->tipLabel->setText(tr("请输入正确的账号和密码！"));
+        ui->tipLabel->setText(tr("请输入正确的用户名和密码！"));
     } else if (type == -1) {
         ui->tipLabel->setText("");
         QMessageBox::critical(this, tr("错误信息"), tr("数据库连接错误"));
@@ -56,7 +61,8 @@ void LoginPage::verification()
         QMessageBox::information(this, tr("普通用户提示窗口"), tr("连接成功！"));
     } else if (type == 1) {
         ui->tipLabel->setText("");
-        QMessageBox::information(this, tr("管理员提示窗口"), tr("连接成功！"));
+        emit dlgClose(type);
+        //QMessageBox::information(this, tr("管理员提示窗口"), tr("连接成功！"));
     }
 }
 
