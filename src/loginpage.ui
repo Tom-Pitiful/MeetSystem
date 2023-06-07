@@ -15,7 +15,6 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog#LoginPage{
-	
 	border-image: url(:/res/image/login_background.jpg);
 }</string>
   </property>
@@ -75,6 +74,7 @@ QLineEdit:focus {
         <property name="font">
          <font>
           <pointsize>20</pointsize>
+          <weight>75</weight>
           <bold>true</bold>
           <underline>false</underline>
           <kerning>true</kerning>
@@ -236,6 +236,8 @@ QPushButton:hover {
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

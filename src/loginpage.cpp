@@ -28,10 +28,10 @@ LoginPage::~LoginPage()
     delete ui;
 }
 
-//void LoginPage::closeEvent(QCloseEvent *event)
-//{
-//    this->deleteLater();
-//}
+void LoginPage::closeEvent(QCloseEvent *)
+{
+    this->deleteLater();
+}
 
 void LoginPage::on_signInPushButton_clicked()
 {
@@ -58,11 +58,10 @@ void LoginPage::verification()
         QMessageBox::critical(this, tr("错误信息"), tr("数据库连接错误"));
     } else if (type == 0) {
         ui->tipLabel->setText("");
-        QMessageBox::information(this, tr("普通用户提示窗口"), tr("连接成功！"));
+        emit openNormalPage();
     } else if (type == 1) {
         ui->tipLabel->setText("");
-        emit dlgClose(type);
-        //QMessageBox::information(this, tr("管理员提示窗口"), tr("连接成功！"));
+        emit openAdminPage();
     }
 }
 

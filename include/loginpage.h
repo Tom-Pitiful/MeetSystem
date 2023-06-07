@@ -18,7 +18,6 @@ class LoginPage : public QDialog
 public:
     LoginPage(QWidget *parent = nullptr);
     ~LoginPage();
-    //void closeEvent(QCloseEvent *event) override;
 
 private slots:
     void on_signInPushButton_clicked();
@@ -27,10 +26,12 @@ private slots:
     void on_forgetPasswdPushButton_clicked();
 
 signals:
-    void dlgClose(int value);
+    void openAdminPage();
+    void openNormalPage();
 
 private:
     Ui::LoginPage *ui;
+    void closeEvent(QCloseEvent *) override;
     QString userName;
     QString passWord;
     void verification(); //用来验证用户名和密码
