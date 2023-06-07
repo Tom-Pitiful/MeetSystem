@@ -1,4 +1,0 @@
-/home/ran/qtcode/KernelMeeting/build/CMakeFiles/KernelMeet.dir
-/home/ran/qtcode/KernelMeeting/build/CMakeFiles/edit_cache.dir
-/home/ran/qtcode/KernelMeeting/build/CMakeFiles/rebuild_cache.dir
-/home/ran/qtcode/KernelMeeting/build/CMakeFiles/KernelMeet_autogen.dir
