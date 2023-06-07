@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "/home/ran/qtcode/KernelMeeting/build/KernelMeet_autogen",
+	"CMAKE_BINARY_DIR" : "/home/ran/qtcode/KernelMeeting/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/ran/qtcode/KernelMeeting/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/ran/qtcode/KernelMeeting",
+	"CMAKE_SOURCE_DIR" : "/home/ran/qtcode/KernelMeeting",
+	"INCLUDE_DIR" : "/home/ran/qtcode/KernelMeeting/build/KernelMeet_autogen/include",
+	"INPUTS" : [ "/home/ran/qtcode/KernelMeeting/src/sql/meetdatabase.db" ],
+	"LOCK_FILE" : "/home/ran/qtcode/KernelMeeting/build/CMakeFiles/KernelMeet_autogen.dir/AutoRcc_other_UVLADIE3JM_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "other" ],
+	"OUTPUT_CHECKSUM" : "UVLADIE3JM",
+	"OUTPUT_NAME" : "qrc_other.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib/qt6/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/ran/qtcode/KernelMeeting/build/CMakeFiles/KernelMeet_autogen.dir/AutoRcc_other_UVLADIE3JM_Used.txt",
+	"SOURCE" : "/home/ran/qtcode/KernelMeeting/src/other.qrc",
+	"VERBOSITY" : 0
+}

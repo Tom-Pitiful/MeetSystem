@@ -1,6 +1,6 @@
 #include <QApplication>
-#include <QtDebug>
-#include <QtSql>
+//#include <QtDebug>
+//#include <QtSql>
 #include "maincontrol.h"
 
 int main(int argc, char *argv[])
