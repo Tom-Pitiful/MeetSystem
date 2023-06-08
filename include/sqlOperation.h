@@ -2,6 +2,7 @@
 #include <QtDebug>
 #include <QtSql>
 #include <QtDebug>
+
 static void connectsql()
 {
     // static QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");

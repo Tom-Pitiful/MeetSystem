@@ -1,11 +1,11 @@
-
 #include "maincontrol.h"
 
 mainControl::mainControl(QObject *parent)
     : QObject{parent}
 {
     login = new LoginPage();
-    login->show();
+    if(login->isAdmin())
+        showAdminPage();
     connect(login, &LoginPage::openAdminPage, this, &mainControl::showAdminPage);
 }
 
