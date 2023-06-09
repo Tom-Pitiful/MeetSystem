@@ -1,7 +1,7 @@
 #include <QApplication>
 //#include <QtDebug>
 //#include <QtSql>
-#include "maincontrol.h"
+#include "src/maincontrol.h"
 
 int main(int argc, char *argv[])
 {

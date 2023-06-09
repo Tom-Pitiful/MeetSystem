@@ -15,7 +15,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog#LoginPage{
-	border-image: url(:/res/image/login_background.jpg);
+	border-image: url(:/image/image/login_background.jpg);
 }</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -36,7 +36,7 @@
     <widget class="QFrame" name="loginFrame">
      <property name="styleSheet">
       <string notr="true">QFrame#loginFrame{
-	background-color: rgba(255, 255, 255, 180);
+        background-color: rgba(255, 255, 255, 180);
 }
 QLineEdit {
     border: none; /* 设置未选中时的边框为无 */
@@ -148,7 +148,7 @@ QLineEdit:focus {
        <widget class="QFrame" name="frame_2">
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	border: none;/*无边框*/
+        border: none;/*无边框*/
 }
 QPushButton:hover {
     color: rgb(255, 0, 0); /*设置按钮的背景颜色为亮绿色*/
@@ -219,16 +219,16 @@ QPushButton:hover {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
-	color: rgb(245, 245, 245);
-	border: none;
-	background-color: rgb(249,83,96);
-	border-radius: 10px;
+        color: rgb(245, 245, 245);
+        border: none;
+        background-color: rgb(249,83,96);
+        border-radius: 10px;
 }
 QPushButton:hover{
-	color: rgb(245, 245, 245);
-	border: none;
-	background-color: rgb(231,75,91);
-	border-radius: 10px;
+        color: rgb(245, 245, 245);
+        border: none;
+        background-color: rgb(231,75,91);
+        border-radius: 10px;
 }</string>
         </property>
         <property name="text">

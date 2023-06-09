@@ -2,6 +2,7 @@
 #define ADMINPAGE_H
 
 #include <QMainWindow>
+
 namespace Ui {
 class adminPage;
 }

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>forgetPassWordDlg</class>
- <widget class="QDialog" name="forgetPassWordDlg">
+ <class>signUpDialog</class>
+ <widget class="QDialog" name="signUpDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>324</width>
-    <height>456</height>
+    <width>258</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog{
-	background-color: rgba(255, 255, 255, 180);
+   <string notr="true">QDialog#signUpDialog{
+        background-color: rgba(255, 255, 255, 180);
 }
 QLineEdit {
     border: none; /* 设置未选中时的边框为无 */
@@ -27,36 +27,22 @@ QLineEdit:focus {
     border-radius: 10px; /* 设置圆角为 10px，保持和未选中状态一致 */
     outline: none; /* 去除默认的选中样式 */
 }
-QLabel#label_2{
-	color: rgb(0, 170, 255);
-}
-QPushButton#ok_btn{
-	color: rgb(245, 245, 245);
-	border: none;
-	background-color: rgb(249,83,96);
-	border-radius: 10px;
-}
-QPushButton#ok_btn:hover{
-	color: rgb(245, 245, 245);
-	border: none;
-	background-color: rgb(231,75,91);
-	border-radius: 10px;
-}
-QLabel#tipLabel{
-	color: rgb(255, 0, 0);
-}</string>
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label_4">
      <property name="font">
       <font>
        <pointsize>20</pointsize>
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 255);</string>
+     </property>
      <property name="text">
-      <string>找回密码</string>
+      <string>用户注册</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -81,7 +67,33 @@ QLabel#tipLabel{
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="label_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>密码：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLabel" name="label_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>姓名：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -94,7 +106,7 @@ QLabel#tipLabel{
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="label_6">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -107,28 +119,15 @@ QLabel#tipLabel{
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="newPassWordLabel">
+        <widget class="QLabel" name="label_7">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>50</height>
+           <height>30</height>
           </size>
          </property>
          <property name="text">
-          <string>新密码：</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="newPassWordLabel_1">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>50</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>确认密码：</string>
+          <string>部门：</string>
          </property>
         </widget>
        </item>
@@ -150,12 +149,47 @@ QLabel#tipLabel{
         </widget>
        </item>
        <item>
+        <widget class="QLineEdit" name="passWordLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>请输入密码</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="nameLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Normal</enum>
+         </property>
+         <property name="placeholderText">
+          <string>请输入姓名</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLineEdit" name="phoneLineEdit">
          <property name="minimumSize">
           <size>
            <width>0</width>
            <height>50</height>
           </size>
+         </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Normal</enum>
          </property>
          <property name="placeholderText">
           <string>请输入11位手机号</string>
@@ -170,41 +204,58 @@ QLabel#tipLabel{
            <height>50</height>
           </size>
          </property>
+         <property name="echoMode">
+          <enum>QLineEdit::Normal</enum>
+         </property>
          <property name="placeholderText">
           <string>请输入邮箱</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="passWordLineEdit">
+        <widget class="QComboBox" name="comboBox">
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>50</height>
+           <height>30</height>
           </size>
          </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
          <property name="placeholderText">
-          <string>请输入新密码</string>
+          <string>选择部门</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="passWordLineEdit_1">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>50</height>
-          </size>
+         <property name="duplicatesEnabled">
+          <bool>false</bool>
          </property>
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-         <property name="placeholderText">
-          <string>再次输入新密码</string>
-         </property>
+         <item>
+          <property name="text">
+           <string>技术部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>财务部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>市场部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>商务部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>销售部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>生产部</string>
+          </property>
+         </item>
         </widget>
        </item>
       </layout>
@@ -218,6 +269,9 @@ QLabel#tipLabel{
        <width>0</width>
        <height>20</height>
       </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
      </property>
      <property name="text">
       <string/>
@@ -237,8 +291,22 @@ QLabel#tipLabel{
        <pointsize>12</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+        color: rgb(245, 245, 245);
+        border: none;
+        background-color: rgb(249,83,96);
+        border-radius: 10px;
+}
+QPushButton:hover{
+        color: rgb(245, 245, 245);
+        border: none;
+        background-color: rgb(231,75,91);
+        border-radius: 10px;
+}</string>
+     </property>
      <property name="text">
-      <string>确定</string>
+      <string>注册</string>
      </property>
     </widget>
    </item>

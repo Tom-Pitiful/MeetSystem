@@ -1,13 +1,14 @@
 
 #include "loginpage.h"
+#include <QDataStream>
 #include <QMessageBox>
 #include <QScreen>
-#include <QDataStream>
 #include <QtDebug>
-#include "sqlOperation.h"
+#include "src/sqlOperation.cpp"
 #include "ui_loginpage.h"
 LoginPage::LoginPage(QWidget *parent)
-    : QDialog(parent), ui(new Ui::LoginPage)
+    : QDialog(parent)
+    , ui(new Ui::LoginPage)
 {
     ui->setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
@@ -23,12 +24,11 @@ LoginPage::LoginPage(QWidget *parent)
     autoLogin = false;
     ui->userNameLineEdit->setFocus(); // 设置焦点在用户名框上
     // 读取文件
-    QString path = QCoreApplication::applicationDirPath();
-    path = path.remove(path.size() - 5, 5);
-    path = path + "res/other/loginSave.info";
+    QDir dir(QDir::current());
+    dir.cdUp();
+    QString path = QDir::cleanPath(dir.path() + "/MeetSystem/res/other/loginSave.info");
     saveInfo = new QFile(path);
-    if (saveInfo->open(QIODevice::ReadOnly))
-    {
+    if (saveInfo->open(QIODevice::ReadOnly)) {
         QDataStream stream(saveInfo);
         stream >> savePasswd;
         stream >> autoLogin;
@@ -43,9 +43,9 @@ LoginPage::LoginPage(QWidget *parent)
     ui->userNameLineEdit->setText(userName);
     ui->passWordLineEdit->setText(passWord);
     u_role = verifyuser(userName, passWord);
-    if(!userName.isEmpty() && !passWord.isEmpty())
+    if (!userName.isEmpty() && !passWord.isEmpty())
         ui->signInPushButton->setFocus();
-    if(passWord.isEmpty())
+    if (!userName.isEmpty() && passWord.isEmpty())
         ui->passWordLineEdit->setFocus();
     this->show();
 }
@@ -84,20 +84,13 @@ void LoginPage::on_signInPushButton_clicked()
     passWord = ui->passWordLineEdit->text();
     savePasswd = ui->savePasswdCheckBox->isChecked();
     autoLogin = ui->autoLoginCheckBox->isChecked();
-    if (userName.isEmpty() && passWord.isEmpty())
-    {
+    if (userName.isEmpty() && passWord.isEmpty()) {
         ui->tipLabel->setText(tr("请输入用户名和密码！"));
-    }
-    else if (userName.isEmpty() && !passWord.isEmpty())
-    {
+    } else if (userName.isEmpty() && !passWord.isEmpty()) {
         ui->tipLabel->setText(tr("请输入用户名！"));
-    }
-    else if (!userName.isEmpty() && passWord.isEmpty())
-    {
+    } else if (!userName.isEmpty() && passWord.isEmpty()) {
         ui->tipLabel->setText(tr("请输入密码！"));
-    }
-    else
-    {
+    } else {
         verification();
     }
     writeFile();
@@ -106,22 +99,15 @@ void LoginPage::on_signInPushButton_clicked()
 void LoginPage::verification()
 {
     int type = verifyuser(userName, passWord);
-    if (type == -2)
-    {
+    if (type == -2) {
         ui->tipLabel->setText(tr("请输入正确的用户名和密码！"));
-    }
-    else if (type == -1)
-    {
+    } else if (type == -1) {
         ui->tipLabel->setText("");
         QMessageBox::critical(this, tr("错误信息"), tr("数据库连接错误"));
-    }
-    else if (type == 0)
-    {
+    } else if (type == 0) {
         ui->tipLabel->setText("");
         emit openNormalPage();
-    }
-    else if (type == 1)
-    {
+    } else if (type == 1) {
         ui->tipLabel->setText("");
         emit openAdminPage();
     }
@@ -129,32 +115,27 @@ void LoginPage::verification()
 
 void LoginPage::writeFile()
 {
-    if(!savePasswd)
-    {
+    if (!savePasswd) {
         userName.clear();
         passWord.clear();
         autoLogin = false;
     }
-    if(userName.isEmpty())
-    {
+    if (userName.isEmpty()) {
         passWord.clear();
         savePasswd = false;
         autoLogin = false;
     }
-    if(passWord.isEmpty())
+    if (passWord.isEmpty())
         savePasswd = false;
-        
-    if (saveInfo->open(QIODevice::WriteOnly))
-    {
+
+    if (saveInfo->open(QIODevice::WriteOnly)) {
         QDataStream stream(saveInfo);
         stream << savePasswd;
         stream << autoLogin;
         stream << userName;
         stream << passWord;
         saveInfo->close();
-    }
-    else
-    {
+    } else {
         qDebug() << saveInfo->errorString();
     }
 }

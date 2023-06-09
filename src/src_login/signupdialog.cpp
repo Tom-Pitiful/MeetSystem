@@ -1,11 +1,11 @@
 #include "signupdialog.h"
 #include <QMessageBox>
 #include <QtDebug>
-#include "sqlOperation.h"
+#include "src/sqlOperation.cpp"
 #include "ui_signupdialog.h"
-signUpDialog::signUpDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::signUpDialog)
+signUpDialog::signUpDialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::signUpDialog)
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("用户注册窗口"));

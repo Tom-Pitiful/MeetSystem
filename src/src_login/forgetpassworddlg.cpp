@@ -1,10 +1,10 @@
 #include "forgetpassworddlg.h"
-#include "ui_forgetpassworddlg.h"
-#include "sqlOperation.h"
 #include <QMessageBox>
-forgetPassWordDlg::forgetPassWordDlg(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::forgetPassWordDlg)
+#include "src/sqlOperation.cpp"
+#include "ui_forgetpassworddlg.h"
+forgetPassWordDlg::forgetPassWordDlg(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::forgetPassWordDlg)
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("找回密码窗口"));
@@ -21,17 +21,13 @@ forgetPassWordDlg::forgetPassWordDlg(QWidget *parent) :
             ui->tipLabel->setText(tr(""));
         }
     });
-    connect(ui->passWordLineEdit_1,&QLineEdit::textEdited,[=](QString newPasswd){
-        if(ui->passWordLineEdit->text() == newPasswd)
-        {
+    connect(ui->passWordLineEdit_1, &QLineEdit::textEdited, [=](QString newPasswd) {
+        if (ui->passWordLineEdit->text() == newPasswd) {
             ui->tipLabel->setText("");
-        }
-        else
-        {
+        } else {
             ui->tipLabel->setText(tr("两次输入的密码不一致！"));
         }
     });
-
 }
 
 forgetPassWordDlg::~forgetPassWordDlg()

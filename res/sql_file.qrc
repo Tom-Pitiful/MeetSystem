@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sql">
+        <file>sql_db/meetdatabase.db</file>
+    </qresource>
+</RCC>

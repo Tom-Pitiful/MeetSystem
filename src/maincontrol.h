@@ -2,10 +2,9 @@
 #ifndef MAINCONTROL_H
 #define MAINCONTROL_H
 
-
 #include <QObject>
-#include "adminpage.h"
-#include "loginpage.h"
+#include "src_admin/adminpage.h"
+#include "src_login/loginpage.h"
 class mainControl : public QObject
 {
     Q_OBJECT
@@ -19,7 +18,6 @@ private:
     adminPage *admin; //管理员界面
     LoginPage *login; //登录界面
 signals:
-
 };
 
 #endif // MAINCONTROL_H

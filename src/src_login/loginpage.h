@@ -8,7 +8,9 @@
 #include "forgetpassworddlg.h"
 #include "signupdialog.h"
 QT_BEGIN_NAMESPACE
-namespace Ui { class LoginPage; }
+namespace Ui {
+class LoginPage;
+}
 QT_END_NAMESPACE
 
 class LoginPage : public QDialog
@@ -37,16 +39,15 @@ private:
     void closeEvent(QCloseEvent *) override;
     QString userName;
     QString passWord;
-    signUpDialog *signDlg; //注册界面
+    signUpDialog *signDlg;         //注册界面
     forgetPassWordDlg *forgetPage; //忘记密码界面
-    QFile *saveInfo;//保存账户密码的文件
-    bool savePasswd;//保存密码状态
-    bool autoLogin;//自动登陆状态
+    QFile *saveInfo;               //保存账户密码的文件
+    bool savePasswd;               //保存密码状态
+    bool autoLogin;                //自动登陆状态
     int u_role;
 
     void verification(); //用来验证用户名和密码
-    void writeFile();//写入文件
-
+    void writeFile();    //写入文件
 };
 
 #endif // LOGINPAGE_H
