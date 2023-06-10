@@ -1,5 +1,6 @@
 #include "maincontrol.h"
 #include <QTimer>
+
 mainControl::mainControl(QObject *parent)
     : QObject{parent}
 {

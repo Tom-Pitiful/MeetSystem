@@ -6,73 +6,177 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
-    <height>418</height>
+    <width>866</width>
+    <height>488</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>80</y>
-      <width>201</width>
-      <height>261</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tableView">
-    <property name="geometry">
-     <rect>
-      <x>325</x>
-      <y>81</y>
-      <width>301</width>
-      <height>231</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>50</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>欢迎您！</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>40</y>
-      <width>111</width>
-      <height>35</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>员工姓名</string>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QTreeWidget" name="nav">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <column>
+       <property name="text">
+        <string notr="true">系统图标</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>首页</string>
+       </property>
+       <property name="toolTip">
+        <string>首页</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/home.svg</normaloff>:/image/image/home.svg</iconset>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>我的会议</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>新建会议</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>会议列表</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>会议室预定</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>参会人员</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>人员管理</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>系统设置</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>欢迎您！</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="name_btn">
+          <property name="toolTip">
+           <string>账号设置</string>
+          </property>
+          <property name="text">
+           <string>员工姓名</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../res/image_all.qrc">
+            <normaloff>:/image/image/user.svg</normaloff>:/image/image/user.svg</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="theme_btn">
+          <property name="text">
+           <string>主题</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>50</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QFrame" name="nav_page">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>709</width>
+     <width>866</width>
      <height>29</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../res/image_all.qrc"/>
+ </resources>
  <connections/>
 </ui>

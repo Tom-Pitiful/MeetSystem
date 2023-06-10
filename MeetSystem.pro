@@ -15,20 +15,24 @@ SOURCES += \
     src/sqlOperation.cpp \
     src/src_login/forgetpassworddlg.cpp \
     src/src_login/loginpage.cpp \
-    src/src_login/signupdialog.cpp
+    src/src_login/signupdialog.cpp \
+    src/src_nav_pages/mymeeting.cpp
 
 HEADERS += \
+    src/sqlOperation.h \
     src/src_admin/adminpage.h \
     src/maincontrol.h \
     src/src_login/forgetpassworddlg.h \
     src/src_login/loginpage.h \
-    src/src_login/signupdialog.h
+    src/src_login/signupdialog.h \
+    src/src_nav_pages/mymeeting.h
 
 FORMS += \
     src/src_admin/adminpage.ui \
     src/src_login/forgetpassworddlg.ui \
     src/src_login/loginpage.ui \
-    src/src_login/signupdialog.ui
+    src/src_login/signupdialog.ui \
+    src/src_nav_pages/mymeeting.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -36,5 +40,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    res/image_all.qrc \
-    res/sql_file.qrc
+    res/image_all.qrc

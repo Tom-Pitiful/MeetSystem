@@ -2,7 +2,7 @@
 #define ADMINPAGE_H
 
 #include <QMainWindow>
-
+#include "src/src_nav_pages/mymeeting.h"
 namespace Ui {
 class adminPage;
 }
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::adminPage *ui;
+    myMeeting *myMeetingPage;
 };
 
 #endif // ADMINPAGE_H

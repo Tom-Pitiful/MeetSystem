@@ -1,6 +1,6 @@
 #include "forgetpassworddlg.h"
 #include <QMessageBox>
-#include "src/sqlOperation.cpp"
+#include "src/sqlOperation.h"
 #include "ui_forgetpassworddlg.h"
 forgetPassWordDlg::forgetPassWordDlg(QWidget *parent)
     : QDialog(parent)

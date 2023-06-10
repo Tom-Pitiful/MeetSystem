@@ -1,8 +1,7 @@
 
-#include <QDir>
-#include <QtDebug>
-#include <QtSql>
-static void connectsql()
+#include "sqlOperation.h"
+
+void connectsql()
 {
     // static QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     // db.setHostName("192.168.1.100");
@@ -18,7 +17,7 @@ static void connectsql()
         QDir dir(QDir::current());
         dir.cdUp();
         QString path = QDir::cleanPath(dir.path() + "/MeetSystem/res/sql_db/meetdatabase.db");
-        qDebug() << path;
+        //qDebug() << path;
         db.setDatabaseName(path); //不知道为什么相对路径不行，只能选择绝对路径
     }
     if (!db.open()) {
@@ -34,7 +33,7 @@ static void connectsql()
  * 0  代表普通用户
  * 1  代表管理员
  */
-static int verifyuser(QString userName, QString passWord)
+int verifyuser(QString userName, QString passWord)
 {
     QSqlQuery query;
     query.prepare(
@@ -56,7 +55,7 @@ static int verifyuser(QString userName, QString passWord)
 }
 
 // 用来判断用户是否已经存在,存在返回true,否则返回false
-static bool isVerifyUserName(QString userName)
+bool isVerifyUserName(QString userName)
 {
     QSqlQuery query;
     query.prepare("SELECT username FROM employee WHERE username = :username");
@@ -70,7 +69,7 @@ static bool isVerifyUserName(QString userName)
     return false;
 }
 // 根据邮箱和手机号返回用户名,不存在或查询失败则返回空字符串
-static QString isVerifyPhoneAndEmail(QString phone, QString email)
+QString isVerifyPhoneAndEmail(QString phone, QString email)
 {
     QSqlQuery query;
     query.prepare("SELECT username FROM employee WHERE phone = :phone and email = :email");
@@ -85,12 +84,12 @@ static QString isVerifyPhoneAndEmail(QString phone, QString email)
     return "";
 }
 
-static bool signUp(QString userName,
-                   QString passWord,
-                   QString employeeName,
-                   QString phone,
-                   QString email,
-                   int departmentid)
+bool signUp(QString userName,
+            QString passWord,
+            QString employeeName,
+            QString phone,
+            QString email,
+            int departmentid)
 {
     QSqlQuery query;
     query.prepare("INSERT INTO employee (employeename, username, phone, email, status, "
@@ -110,7 +109,7 @@ static bool signUp(QString userName,
     return true;
 }
 
-static bool modifyPasswd(QString userName, QString newPasswd)
+bool modifyPasswd(QString userName, QString newPasswd)
 {
     QSqlQuery query;
     query.prepare("UPDATE employee SET password = :password WHERE username = :username");

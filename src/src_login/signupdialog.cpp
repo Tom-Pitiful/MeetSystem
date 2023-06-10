@@ -1,7 +1,7 @@
 #include "signupdialog.h"
 #include <QMessageBox>
 #include <QtDebug>
-#include "src/sqlOperation.cpp"
+#include "src/sqlOperation.h"
 #include "ui_signupdialog.h"
 signUpDialog::signUpDialog(QWidget *parent)
     : QDialog(parent)

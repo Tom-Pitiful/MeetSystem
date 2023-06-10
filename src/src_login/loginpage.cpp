@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QScreen>
 #include <QtDebug>
-#include "src/sqlOperation.cpp"
+#include "src/sqlOperation.h"
 #include "ui_loginpage.h"
 LoginPage::LoginPage(QWidget *parent)
     : QDialog(parent)
