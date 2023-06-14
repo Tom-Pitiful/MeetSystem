@@ -121,3 +121,52 @@ bool modifyPasswd(QString userName, QString newPasswd)
     }
     return true;
 }
+
+QStringList getRoomName()
+{
+    QStringList roomname;
+    QSqlQuery query;
+    query.prepare("SELECT roomname FROM meetingroom ORDER BY roomid ASC");
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return roomname;
+    }
+    while (query.next()) {
+        roomname << query.value(0).toString();
+    }
+    return roomname;
+}
+
+QStringList getDepartmentName()
+{
+    QStringList departmentName;
+    QSqlQuery query;
+    query.prepare("SELECT departmentname FROM department ORDER BY departmentid ASC");
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return departmentName;
+    }
+    while (query.next()) {
+        departmentName << query.value(0).toString();
+    }
+    return departmentName;
+}
+
+QMap<int, QString> getEmployeeNameAndId_forDepartment(int departmentid)
+{
+    QMap<int, QString> employeeNameAndId;
+    QSqlQuery query;
+    query.prepare(
+        "SELECT employeeid, employeename FROM employee WHERE departmentid = :departmentid");
+    query.bindValue(":departmentid", departmentid);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return employeeNameAndId;
+    }
+    while (query.next()) {
+        int id = query.value(0).toInt();
+        QString name = query.value(1).toString();
+        employeeNameAndId.insert(id, name);
+    }
+    return employeeNameAndId;
+}

@@ -23,6 +23,7 @@ public:
     ~LoginPage();
     bool isAdmin();
     bool isNormal();
+    QString getEmployeename();
 
 private slots:
     void on_signInPushButton_clicked();

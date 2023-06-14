@@ -3,5 +3,13 @@
         <file>image/login_background.jpg</file>
         <file>image/home.svg</file>
         <file>image/user.svg</file>
+        <file>image/meetingRoom.svg</file>
+        <file>image/myMeeting.svg</file>
+        <file>image/newMeeting.svg</file>
+        <file>image/person.svg</file>
+        <file>image/searchMeeting.svg</file>
+        <file>image/settings.svg</file>
+        <file>image/up.svg</file>
+        <file>image/down.svg</file>
     </qresource>
 </RCC>

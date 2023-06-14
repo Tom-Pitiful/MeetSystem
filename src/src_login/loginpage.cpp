@@ -73,6 +73,21 @@ bool LoginPage::isNormal()
     return false;
 }
 
+QString LoginPage::getEmployeename()
+{
+    QSqlQuery query;
+    query.prepare("SELECT employeename FROM employee WHERE username = :userName");
+    query.bindValue(":userName", userName);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return "";
+    }
+    if (query.next()) {
+        return query.value(0).toString();
+    }
+    return "";
+}
+
 void LoginPage::closeEvent(QCloseEvent *)
 {
     this->deleteLater();

@@ -14,6 +14,8 @@ mainControl::mainControl(QObject *parent)
 void mainControl::showAdminPage()
 {
     admin = new adminPage();
+    admin->insertName(login->getEmployeename());
     login->close();
+
     admin->show();
 }

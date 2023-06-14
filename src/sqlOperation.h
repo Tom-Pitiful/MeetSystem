@@ -17,4 +17,8 @@ bool signUp(QString userName,
             int departmentid);
 bool modifyPasswd(QString userName, QString newPasswd);
 
+QStringList getRoomName();
+QStringList getDepartmentName();
+QMap<int, QString> getEmployeeNameAndId_forDepartment(int departmentid);
+
 #endif // SQLOPERATION_H

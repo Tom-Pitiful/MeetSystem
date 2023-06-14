@@ -1,9 +1,9 @@
 #include "adminpage.h"
 #include "ui_adminpage.h"
 
-adminPage::adminPage(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::adminPage)
+adminPage::adminPage(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::adminPage)
 {
     ui->setupUi(this);
     ui->nav->setFixedWidth(this->width() / 5);
@@ -14,7 +14,6 @@ adminPage::adminPage(QWidget *parent) :
     connect(ui->nav, &QTreeWidget::itemClicked, [&](QTreeWidgetItem *item) {
         if (item->text(0) == "我的会议") {
             myMeetingPage->setParent(ui->nav_page);
-            myMeetingPage->setFixedSize(ui->nav_page->size());
             myMeetingPage->show();
         } else
             myMeetingPage->hide();
@@ -24,4 +23,14 @@ adminPage::adminPage(QWidget *parent) :
 adminPage::~adminPage()
 {
     delete ui;
+}
+
+void adminPage::insertName(QString name)
+{
+    ui->name_btn->setText(name);
+}
+
+void adminPage::resizeEvent(QResizeEvent *)
+{
+    myMeetingPage->setFixedSize(ui->nav_page->size());
 }

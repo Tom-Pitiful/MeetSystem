@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
@@ -44,35 +47,54 @@
        <property name="text">
         <string>我的会议</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/myMeeting.svg</normaloff>:/image/image/myMeeting.svg</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>新建会议</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/newMeeting.svg</normaloff>:/image/image/newMeeting.svg</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
-        <string>会议列表</string>
+        <string>查询会议</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/searchMeeting.svg</normaloff>:/image/image/searchMeeting.svg</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>会议室预定</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>参会人员</string>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/meetingRoom.svg</normaloff>:/image/image/meetingRoom.svg</iconset>
        </property>
       </item>
       <item>
        <property name="text">
         <string>人员管理</string>
        </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/person.svg</normaloff>:/image/image/person.svg</iconset>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>系统设置</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../res/image_all.qrc">
+         <normaloff>:/image/image/settings.svg</normaloff>:/image/image/settings.svg</iconset>
        </property>
       </item>
      </widget>
@@ -106,6 +128,15 @@
           <property name="toolTip">
            <string>账号设置</string>
           </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+        border: none;/*无边框*/
+		color: rgb(0, 0, 0);
+}
+QToolButton:hover {
+    color: rgb(255, 170, 0); /*设置按钮的背景颜色为亮绿色*/
+}</string>
+          </property>
           <property name="text">
            <string>员工姓名</string>
           </property>
@@ -119,7 +150,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="theme_btn">
+         <widget class="QToolButton" name="theme_btn">
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+        border: none;/*无边框*/
+		color: rgb(0, 0, 0);
+}
+QToolButton:hover {
+    color: rgb(255, 170, 0); /*设置按钮的背景颜色为亮绿色*/
+}</string>
+          </property>
           <property name="text">
            <string>主题</string>
           </property>

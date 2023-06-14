@@ -14,8 +14,11 @@ class adminPage : public QMainWindow
 public:
     explicit adminPage(QWidget *parent = nullptr);
     ~adminPage();
+    void insertName(QString name);
 
 private:
+    void resizeEvent(QResizeEvent *);
+    QString employeeName;
     Ui::adminPage *ui;
     myMeeting *myMeetingPage;
 };
