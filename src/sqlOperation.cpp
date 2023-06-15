@@ -170,3 +170,75 @@ QMap<int, QString> getEmployeeNameAndId_forDepartment(int departmentid)
     }
     return employeeNameAndId;
 }
+
+bool bookMeeting(QString meetingname,
+                 int roomid,
+                 int reservationistid,
+                 int numberofparticipants,
+                 QDateTime starttime,
+                 QDateTime endtime,
+                 QString description,
+                 QList<int> employeeId)
+{
+    QSqlQuery query;
+    if (!query.exec("SELECT meetingid FROM meeting ORDER BY meetingid DESC")) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return false;
+    }
+    int meetingId = -1; //拿到最大的会议id
+    if (query.next()) {
+        meetingId = query.value(0).toInt();
+        meetingId++; //新的会议Id
+    }
+    if (meetingId != -1) {
+        //插入会议
+        query.prepare(
+            "INSERT INTO "
+            "meeting(meetingid,meetingname,roomid,reservationistid,numberofparticipants,starttime,"
+            "endtime,reservationtime,description,status) VALUES(?, ?, ?, ?, ?, ?, ?, ?, "
+            "?, 'normal')");
+        query.bindValue(0, meetingId);
+        query.bindValue(1, meetingname);
+        query.bindValue(2, roomid);
+        query.bindValue(3, reservationistid);
+        query.bindValue(4, numberofparticipants);
+        query.bindValue(5, starttime.toString("yyyy-MM-dd hh:mm:ss"));
+        query.bindValue(6, endtime.toString("yyyy-MM-dd hh:mm:ss"));
+        query.bindValue(7, QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss"));
+        query.bindValue(8, description);
+        if (!query.exec()) {
+            qDebug() << "Error executing query: " << query.lastError().text();
+            return false;
+        }
+        //插入需要参加会议的员工
+        if (!employeeId.isEmpty()) {
+            QList<int>::ConstIterator it;
+            for (it = employeeId.constBegin(); it != employeeId.constEnd(); ++it) {
+                query.prepare(
+                    "INSERT INTO meetingparticipants(meetingid, employeeid) VALUES(?, ?)");
+                query.bindValue(0, meetingId);
+                query.bindValue(1, *it);
+                if (!query.exec()) {
+                    qDebug() << "Error executing query: " << query.lastError().text();
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+int getEmployeeId_forName(QString userName)
+{
+    QSqlQuery query;
+    query.prepare("SELECT employeeid FROM employee WHERE username = :userName");
+    query.bindValue(":userName", userName);
+    if (!query.exec()) {
+        qDebug() << "Error executing query: " << query.lastError().text();
+        return -1;
+    }
+    if (query.next()) {
+        return query.value(0).toInt();
+    }
+    return -1;
+}

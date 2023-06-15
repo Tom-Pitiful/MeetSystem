@@ -21,4 +21,15 @@ QStringList getRoomName();
 QStringList getDepartmentName();
 QMap<int, QString> getEmployeeNameAndId_forDepartment(int departmentid);
 
+bool bookMeeting(QString meetingname,
+                 int roomid,
+                 int reservationistid,
+                 int numberofparticipants,
+                 QDateTime starttime,
+                 QDateTime endtime,
+                 QString description,
+                 QList<int> employeeId);
+
+int getEmployeeId_forName(QString userName);
+
 #endif // SQLOPERATION_H

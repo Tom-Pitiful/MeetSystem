@@ -88,6 +88,13 @@ QString LoginPage::getEmployeename()
     return "";
 }
 
+QString LoginPage::getUserName()
+{
+    if (!userName.isEmpty())
+        return userName;
+    return "";
+}
+
 void LoginPage::closeEvent(QCloseEvent *)
 {
     this->deleteLater();

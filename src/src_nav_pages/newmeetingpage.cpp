@@ -6,10 +6,8 @@ newMeetingPage::newMeetingPage(QWidget *parent) :
     ui(new Ui::newMeetingPage)
 {
     ui->setupUi(this);
-    connectsql();
     ui->startTime->setMinimumDateTime(QDateTime::currentDateTime()); //最低时间为当前时间
     isMod = false;
-
     unattendListModel = new QStringListModel(this); //在连接之前初始化
     attendListModel = new QStringListModel(this);
 
@@ -25,6 +23,11 @@ newMeetingPage::newMeetingPage(QWidget *parent) :
 newMeetingPage::~newMeetingPage()
 {
     delete ui;
+}
+
+void newMeetingPage::getLoginEmployeeId(int id)
+{
+    loginEmployeeId = id;
 }
 
 void newMeetingPage::on_reset_btn_clicked()
@@ -46,6 +49,16 @@ void newMeetingPage::on_book_btn_clicked()
     }
     meetRoom = ui->roomComboBox->currentIndex();
     meetDsp = ui->descriptionTextEdit->toPlainText();
+
+    if (bookMeeting(meetingName,
+                    meetRoom,
+                    loginEmployeeId,
+                    attendNum,
+                    startTime,
+                    endTime,
+                    meetDsp,
+                    attendEmployee.keys()))
+        QMessageBox::information(this, tr("提示信息"), tr("预订成功！"));
 }
 
 void newMeetingPage::on_meetTimeComboBox_currentIndexChanged(int index)
@@ -87,5 +100,39 @@ void newMeetingPage::on_departmentComboBox_currentIndexChanged(int index)
 void newMeetingPage::on_down_btn_clicked()
 {
     QModelIndex curIndex = ui->unattendListView->currentIndex();
+    int id = -1;
     QString name = curIndex.data().toString();
+    for (QMap<int, QString>::iterator it = unAttendEmployee.begin(); it != unAttendEmployee.end();
+         ++it) {
+        if (it.value() == name) {
+            id = it.key();
+            unAttendEmployee.remove(id);
+            break;
+        }
+    }
+    if (id != -1) {
+        attendEmployee.insert(id, name);
+    }
+    unattendListModel->setStringList(unAttendEmployee.values());
+    attendListModel->setStringList(attendEmployee.values());
+}
+
+void newMeetingPage::on_up_btn_clicked()
+{
+    QModelIndex curIndex = ui->attendListView->currentIndex();
+    int id = -1;
+    QString name = curIndex.data().toString();
+    for (QMap<int, QString>::iterator it = attendEmployee.begin(); it != attendEmployee.end();
+         ++it) {
+        if (it.value() == name) {
+            id = it.key();
+            attendEmployee.remove(id);
+            break;
+        }
+    }
+    if (id != -1) {
+        unAttendEmployee.insert(id, name);
+    }
+    unattendListModel->setStringList(unAttendEmployee.values());
+    attendListModel->setStringList(attendEmployee.values());
 }

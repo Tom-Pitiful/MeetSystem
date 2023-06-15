@@ -15,6 +15,7 @@ void mainControl::showAdminPage()
 {
     admin = new adminPage();
     admin->insertName(login->getEmployeename());
+    admin->insertUserName(login->getUserName());
     login->close();
 
     admin->show();

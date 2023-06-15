@@ -24,6 +24,7 @@ public:
     bool isAdmin();
     bool isNormal();
     QString getEmployeename();
+    QString getUserName();
 
 private slots:
     void on_signInPushButton_clicked();

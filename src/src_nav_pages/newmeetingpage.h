@@ -16,6 +16,7 @@ class newMeetingPage : public QWidget
 public:
     explicit newMeetingPage(QWidget *parent = nullptr);
     ~newMeetingPage();
+    void getLoginEmployeeId(int id);
 
 private slots:
     void on_reset_btn_clicked();
@@ -28,8 +29,11 @@ private slots:
 
     void on_down_btn_clicked();
 
+    void on_up_btn_clicked();
+
 private:
     Ui::newMeetingPage *ui;
+    int loginEmployeeId;
     QString meetingName; //会议名称
     int attendNum;       //参加人数
     QDateTime startTime; //开始时间
