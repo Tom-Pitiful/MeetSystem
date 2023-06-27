@@ -16,8 +16,10 @@ SOURCES += \
     src/src_login/forgetpassworddlg.cpp \
     src/src_login/loginpage.cpp \
     src/src_login/signupdialog.cpp \
+    src/src_nav_pages/employeemanagepage.cpp \
     src/src_nav_pages/mymeeting.cpp \
-    src/src_nav_pages/newmeetingpage.cpp
+    src/src_nav_pages/newmeetingpage.cpp \
+    src/src_nav_pages/searchmeeting.cpp
 
 HEADERS += \
     src/sqlOperation.h \
@@ -26,16 +28,20 @@ HEADERS += \
     src/src_login/forgetpassworddlg.h \
     src/src_login/loginpage.h \
     src/src_login/signupdialog.h \
+    src/src_nav_pages/employeemanagepage.h \
     src/src_nav_pages/mymeeting.h \
-    src/src_nav_pages/newmeetingpage.h
+    src/src_nav_pages/newmeetingpage.h \
+    src/src_nav_pages/searchmeeting.h
 
 FORMS += \
     src/src_admin/adminpage.ui \
     src/src_login/forgetpassworddlg.ui \
     src/src_login/loginpage.ui \
     src/src_login/signupdialog.ui \
+    src/src_nav_pages/employeemanagepage.ui \
     src/src_nav_pages/mymeeting.ui \
-    src/src_nav_pages/newmeetingpage.ui
+    src/src_nav_pages/newmeetingpage.ui \
+    src/src_nav_pages/searchmeeting.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

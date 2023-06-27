@@ -6,24 +6,39 @@ adminPage::adminPage(QWidget *parent)
     , ui(new Ui::adminPage)
 {
     ui->setupUi(this);
-    ui->nav->setFixedWidth(this->width() / 5);
-    ui->nav->setMinimumWidth(200);
-    myMeetingPage = new myMeeting();
-    newMeetPage = new newMeetingPage();
+
+    myMeetingPage = new myMeeting(ui->nav_page);
+    newMeetPage = new newMeetingPage(ui->nav_page);
+    searchPage = new SearchMeeting(ui->nav_page);
+    managePage = new employeeManagePage(ui->nav_page);
+    myMeetingPage->hide();
+    newMeetPage->hide();
+    searchPage->hide();
+    managePage->hide();
+
+    myMeetingPage->setFixedSize(ui->nav_page->size());
+    newMeetPage->setFixedSize(ui->nav_page->size());
+    searchPage->setFixedSize(ui->nav_page->size());
+    managePage->setFixedSize(ui->nav_page->size());
 
     //myMeetingPage->adjustSize();
     connect(ui->nav, &QTreeWidget::itemClicked, [&](QTreeWidgetItem *item) {
         if (item->text(0) == "我的会议") {
-            myMeetingPage->setParent(ui->nav_page);
             myMeetingPage->show();
         } else
             myMeetingPage->hide();
         if (item->text(0) == "新建会议") {
-            newMeetPage->setParent(ui->nav_page);
-            newMeetPage->adjustSize();
             newMeetPage->show();
         } else
             newMeetPage->hide();
+        if (item->text(0) == "查询会议") {
+            searchPage->show();
+        } else
+            searchPage->hide();
+        if (item->text(0) == "人员管理") {
+            managePage->show();
+        } else
+            managePage->hide();
     });
 }
 
@@ -49,4 +64,6 @@ void adminPage::resizeEvent(QResizeEvent *)
 {
     myMeetingPage->setFixedSize(ui->nav_page->size());
     newMeetPage->setFixedSize(ui->nav_page->size());
+    searchPage->setFixedSize(ui->nav_page->size());
+    managePage->setFixedSize(ui->nav_page->size());
 }

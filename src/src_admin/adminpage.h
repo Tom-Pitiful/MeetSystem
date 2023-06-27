@@ -2,8 +2,10 @@
 #define ADMINPAGE_H
 
 #include <QMainWindow>
+#include "src/src_nav_pages/employeemanagepage.h"
 #include "src/src_nav_pages/mymeeting.h"
 #include "src/src_nav_pages/newmeetingpage.h"
+#include "src/src_nav_pages/searchmeeting.h"
 namespace Ui {
 class adminPage;
 }
@@ -25,6 +27,8 @@ private:
     Ui::adminPage *ui;
     myMeeting *myMeetingPage;
     newMeetingPage *newMeetPage;
+    SearchMeeting *searchPage;
+    employeeManagePage *managePage;
 };
 
 #endif // ADMINPAGE_H

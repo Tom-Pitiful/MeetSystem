@@ -21,10 +21,16 @@
     <item>
      <widget class="QTreeWidget" name="nav">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
       </property>
       <column>
        <property name="text">
@@ -68,15 +74,6 @@
        <property name="icon">
         <iconset resource="../../res/image_all.qrc">
          <normaloff>:/image/image/searchMeeting.svg</normaloff>:/image/image/searchMeeting.svg</iconset>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>会议室预定</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../../res/image_all.qrc">
-         <normaloff>:/image/image/meetingRoom.svg</normaloff>:/image/image/meetingRoom.svg</iconset>
        </property>
       </item>
       <item>
@@ -191,6 +188,9 @@ QToolButton:hover {
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -209,7 +209,7 @@ QToolButton:hover {
      <x>0</x>
      <y>0</y>
      <width>866</width>
-     <height>29</height>
+     <height>17</height>
     </rect>
    </property>
   </widget>
